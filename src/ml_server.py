@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request
+from flask import Flask, render_template, redirect, request, url_for
 from models import RandomForestMSE, GradientBoostingMSE
 import inspect
 
@@ -27,11 +27,6 @@ def get_index():
     return '<html><center><script>document.write("HeLlO, wOrLd!")</script></center></html>'
 
 
-# @app.route('/messages', methods=['GET', 'POST'])
-# def prepare_message():
-#     return redirect('/')
-
-
 @app.route('/random_forest')
 def choose_random_forest():
     global current_model, current_model_params
@@ -55,9 +50,21 @@ def init_info():
         values = {}
         for param in current_model_params:
             try:
-                values[param] = float(request.form[param])
+                if param == 'n_estimators':
+                    values[param] = float(request.form[param])
+                else:
+                    if len(request.form[param]) > 0:
+                        values[param] = float(request.form[param])
+                    else:
+                        values[param] = None
             except ValueError:
                 return render_template('error.html', error_message=f"incorrect input for parameter {param}\n")
 
         current_model = current_model(**values)
+        return redirect(url_for('data_load'))
+
+
+@app.route('/data_load', methods=['GET', 'POST'])
+def data_load():
+    return '<html><center><script>document.write("HeLlO, wOrLd!")</script></center></html>'
 
