@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ modelname }}</title>
+</head>
+<body>
+<form method="post" action="{{ url_for('init_info') }}">
+  {% for param in params %}
+    <label for={{param}}>{{param}}</label>
+    <input id={{param}} type="text" name={{param}}> <br>
+  {% endfor %}
+  <button type="submit">Enter</button>
+</form>
+</body>
+</html>
