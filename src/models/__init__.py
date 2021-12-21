@@ -1,1 +1,1 @@
-from ensembles import RandomForestMSE, GradientBoostingMSE
+from .ensembles import RandomForestMSE, GradientBoostingMSE
