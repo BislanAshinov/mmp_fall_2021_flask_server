@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello!</title>
+    </head>
+    <body>
+    <h1>
+        It is a service for training machine learning models such as Random Forest and Gradient Boosting.
+        You can select a model and the values of the hyperparameters of
+        this model, upload a training and validation sample.
+    </h1>
+    </body>
+<h2>
+    Choose model:
+    <a href="{{ url_for('choose_random_forest') }}"> Random Forest</a>
+    <a href="{{ url_for('choose_gradient_boosting') }}"> Gradient Boosting</a>
+</h2>
+</html>
